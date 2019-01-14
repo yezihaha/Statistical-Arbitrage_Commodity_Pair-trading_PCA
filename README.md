@@ -64,7 +64,7 @@ Each eigenvalue corresponds to the how much of the total variance of the data th
 
 The corresponding principal component represents a portfolio allocation that captures that amount of variance. 
 
-![main][imgs/main_eigen.png)
+![hello][imgs/main_eigen.png)
 
 It can be seen from the image above that the eigenvector portfolio allocation that captures the most variance 
 (a.k.a. the top eigenvector) is almost identical to the market. 
