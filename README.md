@@ -2,8 +2,7 @@
 This analysis shows an application of Principal Component Analysis in order to develop a pairs trading strategy to 
 capture statistical arbitrage in the Precious Metals Market. 
 
-We are going to look at how using PCA to create "eigenportfolios" that can be used as a portfolio allocation that captures statistical 
-arbitrage between a basket of stocks. 
+We are going to look at how using PCA to create "eigenportfolios" that can be used to obtain a Sharpe Ratio of 1.093 and a Sortino Ratio of 1.578 using a risk-free rate of 2%. 
 
 ## Data
 
@@ -81,7 +80,7 @@ The corresponding eigenvalue shows how much of the total variance of the data is
 
 ### Spectral Analysis
 
-![eq14[(imgs/spectral.png)
+![eq14](imgs/spectral.png)
 
 The graph above shows the spectral analysis of the principal components. It can be seen that the principal eigenvector or "market vector" captures around 65% of the variance explained in the data. The other eigenvectors capture the intercompany variance and noise. 
 
@@ -90,3 +89,38 @@ It follows that all other eigenportfolios of the eigenbasis is orthogonal to the
 Furthermore, since the principal component has all positive coefficients, the orthogonal eigenvectors must have at least 1 negative coefficient. 
 
 Therefore, we claim that the orthogonal eigenvectors represent a market neutral pairs trading strategy that aims to capture the variance not explained by the market. 
+
+In the next section, we show that utilizing the orthogonal vectors as a market neutral pairs trading porfolio leads to promising profits. 
+
+## Backtesting the Orthogonal Eigenportfolio allocation
+
+We will now try to backtest this algorithm by training on the first 8 years of historical data and then testing it on the final 2 years. 
+
+![eq15](imgs/second_eigen.png)
+
+The second eigenportfolio allocation performs well, capturing the variance of historical returns between precious metals 
+and earning a respectable 25% return over 2 years. 
+
+The portfolio allocation used was as follows: 
+[Gold, Silver, Platinum, Palladium]
+[-0.10754848 -0.67890968  0.19386913  0.69994981]
+
+## Conclusion
+
+The eigenportfolio technique is an interesting way to decompose a sector and potentially find market neutral pairs trading opportunities between different assets of a sector. 
+
+Given the right circumstances, we can use it to obtain a respectable profit of 25% over 2 years in the precious metals market, as shown in backtesting. 
+
+Below are some of the caveats and next steps for this project. 
+
+* Volatility effects the eigenportfolios by a lot. We need to explore the effects of normalizing by volatility. 
+
+* This assumes the market forces are linear. Will need to investigate results by using non-linear PCA.
+
+* This is constrained to groups of assets where all assets are correlated with each other to some degree. 
+
+* Will need to look at backtesting results when eigenportfolios are dynamically rebalanced.
+
+* look at very stable markets, medical equipment, construction, retail, semiconductor, things that are robust to policy related volatility
+
+
