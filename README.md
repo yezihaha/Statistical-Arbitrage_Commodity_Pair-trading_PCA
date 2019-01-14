@@ -64,7 +64,7 @@ Each eigenvalue corresponds to the how much of the total variance of the data th
 
 The corresponding principal component represents a portfolio allocation that captures that amount of variance. 
 
-![eq12](imgs/eq12.gif)
+![eq13](imgs/main_eigen.png)
 
 It can be seen from the image above that the eigenvector portfolio allocation that captures the most variance 
 (a.k.a. the top eigenvector) is almost identical to the market. 
@@ -78,3 +78,15 @@ Now that we are guaranteed that the first principal component has all non-negati
 the first principal component as the vector that characterizes "market forces", since it takes a long position in every underlying. 
 
 The corresponding eigenvalue shows how much of the total variance of the data is explained by market forces. 
+
+### Spectral Analysis
+
+![eq14[(imgs/spectral.png)
+
+The graph above shows the spectral analysis of the principal components. It can be seen that the principal eigenvector or "market vector" captures around 65% of the variance explained in the data. The other eigenvectors capture the intercompany variance and noise. 
+
+It follows that all other eigenportfolios of the eigenbasis is orthogonal to the first principal component. This means that it's "uncorrelated" with the market, and hence, market neutral. 
+
+Furthermore, since the principal component has all positive coefficients, the orthogonal eigenvectors must have at least 1 negative coefficient. 
+
+Therefore, we claim that the orthogonal eigenvectors represent a market neutral pairs trading strategy that aims to capture the variance not explained by the market. 
